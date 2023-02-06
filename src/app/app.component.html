@@ -1,0 +1,71 @@
+<div style="margin:3em">
+  <h1>Formulario</h1>
+  <form (ngSubmit) = "enviar(formulario)" #formulario = "ngForm">
+    <div class="mb-3 row">
+      <label class="col-sm-3 col-form-label">Inversión inicial</label>
+      <div class="col-sm-9">
+        <input type="number" class="form-control" placeholder="ej.2000" ngModel name="inversionInicial" required>
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label class="col-sm-3 col-form-label">Aportación anual</label>
+      <div class="col-sm-9">
+        <input type="number" class="form-control" placeholder="ej.2000" ngModel name="aportacionAnual" required>
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label class="col-sm-3 col-form-label">Porcentaje anual</label>
+      <div class="col-sm-9">
+        <input type="number" class="form-control" placeholder="ej.2000" ngModel name="porcentajeAnual" required>
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label class="col-sm-3 col-form-label">Años de inversión</label>
+      <div class="col-sm-9">
+        <input type="number" class="form-control" placeholder="ej.2000" ngModel name="aniosInversion" required>
+      </div>
+    </div>
+    <div class="mb-3 row">
+      <label class="col-sm-3 col-form-label">Rendimiento de inversión</label>
+      <div class="col-sm-9">
+        <input type="number" class="form-control" placeholder="ej.2000" ngModel name="rendimientoInversion" required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <button type="submit" class="btn btn-primary float-end">Enviar</button>
+      </div>
+    </div>
+  </form>
+
+  <div *ngIf = "result">
+    <div class="row">
+      <div class="col">
+        <div class="grid text-center">
+          <div class="g-col-6 g-col-md-6">Ganancia por inversión: ${{ result.gananciaInversion }}</div>
+          <div class="g-col-6 g-col-md-6">Monto Final: ${{ result.montoFinal }}</div>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Año</th>
+              <th scope="col">Saldo inicial</th>
+              <th scope="col">Aportación</th>
+              <th scope="col">Rendimiento</th>
+              <th scope="col">Saldo final</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor = "let tabla of result.tabla">
+              <th scope="row">{{ tabla.anio }}</th>
+              <th scope="row">{{ tabla.saldoInicial }}</th>
+              <th scope="row">{{ tabla.aportacion }}</th>
+              <th scope="row">{{ tabla.rendimiento }}</th>
+              <th scope="row">{{ tabla.saldoFinal }}</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
